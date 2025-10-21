@@ -44,3 +44,10 @@ Enter profile (any/private/public/domain): any
 
 Rule added/updated and saved.
 
+
+
+Firewall Monitoring Module
+firewall_monitor.ps1
+
+A real-time event monitoring script that continuously scans Windows Event Logs for firewall-related changes and logs them into a structured .jsonl file.
+This module is ideal for auditing, incident analysis, or security research related to system configuration changes.
