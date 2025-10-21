@@ -61,3 +61,26 @@ Enter remote port (leave blank for any):
 Enter profile (any/private/public/domain): any
 
 Rule added/updated and saved.
+```
+## Firewall Monitoring Module
+
+**File:** `firewall_monitor.ps1`
+
+A real-time event monitoring script that continuously scans Windows Event Logs for firewall-related changes and logs them into a structured `.jsonl` file.  
+This module is ideal for auditing, incident analysis, or security research related to system configuration changes.
+
+### Key Features
+
+- Requires Administrator privileges (`#Requires -RunAsAdministrator`)
+- Detects additions, deletions, and modifications of firewall rules
+- Logs all events to `firewall_changes.jsonl`
+- Supports adjustable polling interval (default: 5 seconds)
+- Handles errors and logs diagnostic information with timestamps
+
+---
+
+### Output Example (`firewall_changes.jsonl`)
+
+```json
+{"TimeCreated":"2025-10-21 12:03:25.312+01:00","EventId":4947,"Provider":"Microsoft-Windows-Security-Auditing","LogName":"Security","Message":"A Windows Firewall rule was added.","UserSid":"S-1-5-18"}
+{"TimeCreated":"2025-10-21 12:05:42.104+01:00","EventId":2004,"Provider":"Microsoft-Windows-Windows Firewall With Advanced Security","LogName":"Firewall","Message":"The rule 'WebServer' was modified."}
