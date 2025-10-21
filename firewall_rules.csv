@@ -1,0 +1,4 @@
+"action","remoteport","profile","name","direction","localport","protocol","enabled"
+"block","any","any","nowa2","in","1000","TCP","True"
+"allow","any","any","test2","out","22","TCP","True"
+"allow","any","public","nowa3","in","54321","TCP","True"

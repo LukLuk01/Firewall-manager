@@ -1,0 +1,34 @@
+{
+    "rules":  [
+                  {
+                      "action":  "block",
+                      "remoteport":  "any",
+                      "profile":  "any",
+                      "name":  "nowa2",
+                      "direction":  "in",
+                      "localport":  "1000",
+                      "protocol":  "TCP",
+                      "enabled":  true
+                  },
+                  {
+                      "action":  "allow",
+                      "name":  "test2",
+                      "remoteport":  "any",
+                      "localport":  "22",
+                      "direction":  "out",
+                      "profile":  "any",
+                      "protocol":  "TCP",
+                      "enabled":  true
+                  },
+                  {
+                      "action":  "allow",
+                      "remoteport":  "any",
+                      "profile":  "public",
+                      "name":  "nowa3",
+                      "direction":  "in",
+                      "localport":  "54321",
+                      "protocol":  "TCP",
+                      "enabled":  true
+                  }
+              ]
+}
