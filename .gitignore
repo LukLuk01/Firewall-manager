@@ -1,3 +1,4 @@
 firewall_system_backup.wfw
+firewall_origin_backup.wfw
 monitorowanie/firewall_changes.jsonl
 .vscode

@@ -6,6 +6,7 @@
 $configFile = Join-Path -Path $PSScriptRoot -ChildPath "firewall_rules.json"
 $systemBackupFile = Join-Path -Path $PSScriptRoot -ChildPath "firewall_system_backup.wfw"
 $csvExportPath = Join-Path -Path $PSScriptRoot -ChildPath "firewall_rules.csv"
+$originBackupFile = Join-Path -Path $PSScriptRoot -ChildPath "firewall_origin_backup.wfw"
 
 # ------------------------------
 # Function: Get firewall rules from JSON
@@ -357,12 +358,42 @@ function Enable-AllFirewallRulesFromJson {
     }
 }
 
+# ------------------------------
+# One-time creation of origin firewall backup
+# ------------------------------
+function Ensure-OriginFirewallBackup {
+    Write-Host "`n--- Checking for original system firewall backup ---`n"
+
+    try {
+        if (Test-Path -LiteralPath $originBackupFile) {
+            Write-Host "Origin backup already exists: $originBackupFile (skipping)."
+            return
+        }
+
+        # Upewnij się, że katalog docelowy istnieje
+        $parent = Split-Path -Parent $originBackupFile
+        if ($parent -and -not (Test-Path -LiteralPath $parent)) {
+            New-Item -ItemType Directory -Path $parent -Force | Out-Null
+        }
+
+        netsh advfirewall export "$originBackupFile"
+        Write-Host " Origin firewall backup created at: $originBackupFile"
+    } catch {
+        Write-Host " Failed to create origin backup: $_"
+    }
+}
+
+
+
 
 # ------------------------------
 # MAIN MENU
 # ------------------------------
 function Main {
     Write-Host "`nWelcome to Interactive Firewall Manager"
+
+    # Jednorazowy backup przy pierwszym uruchomieniu
+    Ensure-OriginFirewallBackup
 
     while ($true) {
         Write-Host "`nSelect an option:"

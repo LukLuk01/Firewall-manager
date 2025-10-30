@@ -1,16 +1,6 @@
 {
     "rules":  [
                   {
-                      "action":  "block",
-                      "remoteport":  "any",
-                      "profile":  "any",
-                      "name":  "nowa2",
-                      "direction":  "in",
-                      "localport":  "1000",
-                      "protocol":  "TCP",
-                      "enabled":  true
-                  },
-                  {
                       "action":  "allow",
                       "name":  "test2",
                       "remoteport":  "any",
@@ -27,6 +17,36 @@
                       "name":  "nowa3",
                       "direction":  "in",
                       "localport":  "54321",
+                      "protocol":  "TCP",
+                      "enabled":  true
+                  },
+                  {
+                      "action":  "block",
+                      "remoteport":  "any",
+                      "profile":  "any",
+                      "name":  "block333port",
+                      "direction":  "in",
+                      "localport":  "333",
+                      "protocol":  "TCP",
+                      "enabled":  true
+                  },
+                  {
+                      "action":  "block",
+                      "remoteport":  "any",
+                      "profile":  "any",
+                      "name":  "nowa2",
+                      "direction":  "out",
+                      "localport":  "1001",
+                      "protocol":  "tcp",
+                      "enabled":  true
+                  },
+                  {
+                      "action":  "block",
+                      "remoteport":  "any",
+                      "profile":  "any",
+                      "name":  "block500",
+                      "direction":  "out",
+                      "localport":  "500",
                       "protocol":  "TCP",
                       "enabled":  true
                   }
